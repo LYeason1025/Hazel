@@ -48,9 +48,11 @@ namespace Hazel
 		bool IsInCategory(EventCategory category) 
 		{
 			return GetCategoryFlags() & category;
+
 		}
 
-	protected:
+//这里访问不到用Protected
+	public:
 		bool m_Handled = false;
 
     };
@@ -64,9 +66,10 @@ namespace Hazel
 		template<typename T,typename F>
 		bool Dispatch(const F& func)
 		{
-			if (m_Event.GetEventType()==T::GetstaticType())
+			if (m_Event.GetEventType()==T::GetStaticType())
 			{
-				m_Event.m_Handled |= func(static_cast<T&>(m_Event));
+
+				m_Event.m_Handled|= func(static_cast<T&>(m_Event));
 				return true;
 			}
 			return false;

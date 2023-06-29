@@ -18,7 +18,7 @@ namespace Hazel
 		int m_KeyCode;
 	};
 
-	class KeyPressedEvent :KeyEvent
+	class KeyPressedEvent :public KeyEvent
 	{
 	public:
 		KeyPressedEvent(const int keycode, const uint16_t repeatCount)
@@ -38,7 +38,7 @@ namespace Hazel
 	};
 
 		
-	class KeyReleasedEvent :KeyEvent 
+	class KeyReleasedEvent :public KeyEvent
 	{
 	public:
 		KeyReleasedEvent(const int keycode)
@@ -53,7 +53,7 @@ namespace Hazel
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class KeyTypedEvent :KeyEvent
+	class KeyTypedEvent :public KeyEvent
 	{
 	public:
 		KeyTypedEvent(const int keycode)
